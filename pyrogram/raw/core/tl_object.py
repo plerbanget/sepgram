@@ -18,14 +18,12 @@
 
 from io import BytesIO
 from json import dumps
-from typing import cast, List, Any, Union, Dict, TypeVar, Generic
+from typing import cast, List, Any, Union, Dict
 
 from ..all import objects
 
-ReturnType = TypeVar("ReturnType")
 
-
-class TLObject(Generic[ReturnType]):
+class TLObject:
     __slots__: List[str] = []
 
     QUALNAME = "Base"
@@ -80,5 +78,5 @@ class TLObject(Generic[ReturnType]):
     def __len__(self) -> int:
         return len(self.write())
 
-    def __call__(self, *args: Any, **kwargs: Any) -> ReturnType:
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
         pass
